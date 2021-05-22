@@ -1,0 +1,17 @@
+<div class="search-form-container slideIn">
+    <h1 class="search-form-title">Where do you want to go?</h1>
+    <br>
+    <form action="{% url 'search_results' %}" id="search-form" method="get" class="design-form">
+        {% csrf_token %}
+        <div class="three-columns">
+            <label for="country_name" class="form-title-colour">Country:</label>
+            <label for="state_name" class="form-title-colour">State:</label>
+            <label for="category" class="form-title-colour">Category:</label>
+            {{ form.country_name }}
+            {{ form.state_name }}
+            {{ form.category }}
+        </div>
+        <br>
+        <input type="submit" value="search" class="form-button-secondary" id="input-button">
+    </form>
+</div>

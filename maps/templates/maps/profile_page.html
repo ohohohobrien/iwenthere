@@ -1,0 +1,34 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    {% block script %}
+        <link rel="stylesheet" href="{% static 'maps/main.css' %}">
+        <script src="{% static 'maps/navbar.js' %}"></script>
+    {% endblock %}  
+</head>
+<body>
+    
+    <h1 class="creator-name">{{ creator_name }}'s page</h1>
+    {% if request.user.username == creator_name %}
+        <a style="text-decoration: none;" href="{% url 'logout' %}">
+            <div class="page-button-container" style="margin-bottom: 0;">
+                <button class="page-button" style="margin-bottom: 0;">logout</button>
+            </div>
+        </a>
+    {% endif %}
+
+    {% block navbar %}
+        {% include "maps/navigation_bar.html" %}
+    {% endblock %}
+
+    {% block body %}
+        {% include "maps/index_post_layout.html" %}
+    {% endblock %}
+    
+</body>
+</html>

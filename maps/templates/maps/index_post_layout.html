@@ -1,0 +1,78 @@
+{% for map in maps %}
+
+    <div class="post-container slideIn">
+        <!--Can place the image in the context... will need to update-->
+        <div class="post-column">
+            <a href="{% url 'display_map' map.pk %}">
+                <img class="post-picture" src="{{ map.cover.url }}" alt="post picture">
+            </a>
+        </div>
+
+        <div class="post-column">
+            <div class="post-details-container">
+                <a href="{% url 'display_map' map.pk %}">
+                    <h2 class="post-header">{{ map.title }}</h2>
+                </a>
+                <div class="post-detailed-details-container">
+                    <div class="detailed-details-container">
+                        <img class="location-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/94-512.png" alt="location marker">
+                        <span class="detail-text">Location: {{map.state_name}}, {{ map.country_name }}</span>
+                        <span class="detail-text">
+                            {% if map.duration_hours != 0 %}
+                                {% if map.duration_hours == 1 %}
+                                    {{ map.duration_hours }} hour
+                                {% else %}
+                                    {{ map.duration_hours }} hours
+                                {% endif %}
+                            {% endif %}
+                            {% if map.duration_minutes != 0 %}
+                                {% if map.duration_minutes == 1 %}
+                                    {{ map.duration_minutes }} minute
+                                {% else %}
+                                    {{ map.duration_minutes }} minutes
+                                {% endif %}
+                            {% endif %}
+                            <br>
+                            ({{ map.distance }})</span>
+                    </div>
+                    <p class="post-description-text">{{ map.description }}</p>
+                    <a class="mobile-picture" href="{% url 'display_map' map.pk %}">
+                        <img class="post-picture" src="{{ map.cover.url }}" alt="post picture">
+                    </a>
+                    <span class="category">#{{ map.category.category }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% empty %}
+    nothing to see here
+{% endfor %}
+
+<div class="page-button-container">
+
+    {% if search %}
+        {% if maps.has_previous %}
+            <a href="{{ request.path }}?page={{ maps.previous_page_number }}&country_name={{ request.GET.country_name }}&state_name={{ request.GET.state_name }}&category={{ request.GET.category }}">
+                <button class="page-button-secondary">Previous Page</button>
+            </a>
+        {% endif %}
+        {% if maps.has_next %}
+            <a href="{{ request.path }}?page={{ maps.next_page_number }}&country_name={{ request.GET.country_name }}&state_name={{ request.GET.state_name }}&category={{ request.GET.category }}">
+                <button class="page-button-secondary">Next Page</button>
+            </a>
+        {% endif %}
+    {% else %}
+        {% if maps.has_previous %}
+            <a href="{{ request.path }}?page={{ maps.previous_page_number }}">
+                <button class="page-button-secondary">Previous Page</button>
+            </a>
+        {% endif %}
+            {% if maps.has_next %}
+            <a href="{{ request.path }}?page={{ maps.next_page_number }}">
+                <button class="page-button-secondary">Next Page</button>
+            </a>
+        {% endif %}
+    {% endif %}
+
+</div>

@@ -1,0 +1,14 @@
+Using Django
+Using django-allauth
+Using Pillow
+ - this allows for ImageField
+ - python -m pip install Pillow
+
+pip install django-widget-tweaks
+
+Using: 
+    import re
+    from itertools import islice
+    import base64
+
+Using OpenLayers v6.5.0

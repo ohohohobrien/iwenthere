@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap');
+
+:root {
+    --primary-colour: #c3dd6f;
+    --primary-colour-light: #e8f5bd9f;
+    --secondary-colour:  #B65F36;
+    --secondary-colour-light: #ffd07e;
+    --secondary-colour-lightest: hsl(28, 76%, 84%);
+}
+
+@mixin gradient-background {
+    background: rgb(195,221,111);
+    background: linear-gradient(0deg, rgba(195,221,111,1) 0%, rgba(195,221,111,1) 12%, rgba(233,213,121,1) 37%, rgba(255,208,126,1) 100%);
+}
+
+@mixin form-button {
+    margin-top: 0.5em;
+    padding: 1em 1em;
+    font-size: 1.2rem;
+    font-weight: 800;
+    width: 200px;
+    justify-self: center;
+    border: 6px outset rgba(107,224,18,0.2);
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.controls-container {
+    margin: 1em 4em 0 4em;
+}
+
+.search-form-container {
+
+    margin: 20vh 5vw;
+    padding: 4em 1em;
+    background-color: rgba(255, 228, 196, 0.514);
+    text-align: center;
+    border-radius: 20px;
+    border: 3px outset rgba(107,224,18,0.2);
+
+}
+
+.search-form-title {
+    font-weight: 800;
+    font-size: 4em;
+    color: var(--secondary-colour);
+}
+
+.design-form {
+    font-family: "Nunito";
+    display: grid;
+    grid-gap: 5px;
+    padding: 0 10em;
+
+    .two-columns {
+        display: grid;
+        grid-gap: 0px 5px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.6fr 1fr;
+    }
+
+    .three-columns {
+        display: grid;
+        grid-gap: 0px 5px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0.6fr 1fr;
+
+        .required {
+            border: 3px outset rgba(226, 169, 12, 0.603);
+        }
+    }
+
+    .four-columns {
+        display: grid;
+        grid-gap: 0px 5px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .form-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+    }
+
+    .form-title-colour {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--secondary-colour);
+    }
+
+    .form-title-small {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+    .form-input-box {
+        padding: 10px;
+        border: 0;
+        border-bottom:1px solid rgb(216, 216, 216); // add only bottom border
+        border-radius: 10px;
+        height: 1.5em;
+        font-size: 1.2rem;
+        font-family:inherit;
+        box-shadow:0 0 10px 2px rgba(0,0,0,0.06);
+    }
+
+    .form-description {
+        padding: 10px;
+        border: 0;
+        border-bottom:1px solid rgb(216, 216, 216); // add only bottom border
+        border-radius: 10px;
+        resize: none;
+        font-size: 1.2rem;
+        font-family:inherit;
+        box-shadow:0 0 10px 2px rgba(0,0,0,0.06);
+    }
+
+    .select-box {
+        width: 100%;
+        padding:10px;
+        border-radius:10px;
+        height: 3em;
+        border: 0;
+    }
+
+    .form-button {
+        @include form-button();
+        background-color: var(--primary-colour);
+        transition: 0.3s;
+        
+        &:hover {
+            background-color:rgb(44, 228, 167);
+        }
+    }
+
+    .form-button-secondary {
+        background-color: var(--secondary-colour-light);
+        @include form-button();
+        transition: 0.3s;
+
+        &:hover {
+            background-color: var(--secondary-colour);
+        }
+    }
+
+    input:required + span:after {
+        content: "Required";
+    }
+    
+}
+
+
+.ol-tooltip {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+  opacity: 0.7;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.ol-tooltip-measure {
+  opacity: 1;
+  font-weight: bold;
+}
+.ol-tooltip-static {
+  background-color: #ffcc33;
+  color: black;
+  border: 1px solid white;
+}
+.ol-tooltip-measure:before,
+.ol-tooltip-static:before {
+  border-top: 6px solid rgba(0, 0, 0, 0.5);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  margin-left: -7px;
+  left: 50%;
+}
+.ol-tooltip-static:before {
+  border-top-color: #ffcc33;
+}
+  
+
+@media only screen and (max-width: 1150px) {
+
+    .design-form {
+        padding: 0 6em;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+
+    .search-form-container {
+        margin: 15vh 1vw;
+    }
+
+    .design-form {
+        padding: 0 2em;
+    }
+
+    .search-form-title {
+        font-size: 3em;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .design-form {
+        padding: 0 0.5em;
+    }
+
+    .design-form {
+        padding: 0 0.5em;
+    
+        .form-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+    
+        .form-title-colour {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary-colour);
+        }
+
+        .form-title-small {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    }
+
+}

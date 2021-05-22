@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap');
+
+:root {
+    --primary-colour: #c3dd6f;
+    --primary-colour-light: #e8f5bd9f;
+    --secondary-colour:  #B65F36;
+    --secondary-colour-light: #ffd07e;
+    --secondary-colour-lightest: hsl(28, 76%, 84%);
+}
+
+@mixin gradient-background {
+    background: rgb(195,221,111);
+    background: linear-gradient(0deg, rgba(195,221,111,1) 0%, rgba(195,221,111,1) 12%, rgba(233,213,121,1) 37%, rgba(255,208,126,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito';
+    //background-color: var(--secondary-colour-light);
+    @include gradient-background();
+}
+
+.login-container {
+    margin: 10em 20em 5em 20em;
+    height: 400px;
+    display: grid;
+    grid-template-columns: clamp(200px, 80%, 800px);
+    background-color: rgba(231, 182, 47, 0.212);
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    border-radius: 20px;
+
+    .hero-text {
+        margin: 0;
+        padding: 1em 0;
+        justify-self: center;
+        align-self: center;
+        font-weight: 800;
+        font-size: 4em;
+        color: var(--secondary-colour);
+    }
+
+    .login-text {
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        color: var(--secondary-colour);
+    }
+
+    a {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        .login-image {
+            margin: 0;
+            padding: auto;
+            width: 200px;
+            height: 50px;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .login-container {
+        grid-template-columns: clamp(200px, 80%, 600px);
+        margin: 10em 10em 5em 10em;
+
+        .hero-text {
+            font-size: 3em;
+        }
+    }
+
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .login-container {
+        grid-template-columns: clamp(200px, 80%, 600px);
+        margin: 10em 2em 2em 2em;
+
+        .hero-text {
+            font-size: 2em;
+        }
+    }
+
+
+}

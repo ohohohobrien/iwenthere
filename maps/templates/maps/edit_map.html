@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    {% block script %}
+        <link rel="stylesheet" href="{% static 'dependencies/v6.5.0-dist/ol.css' %}">
+        <link rel="stylesheet" href="{% static 'maps/create_map.css' %}">
+        <link rel="stylesheet" href="{% static 'maps/main.css' %}">
+        <script src="{% static 'maps/main.js' %}"></script>
+        <script src="{% static 'dependencies/v6.5.0-dist/ol.js' %}"></script>
+        <script src="{% static 'maps/navbar.js' %}"></script>
+    {% endblock %}  
+</head>
+<body>
+    {% block navbar %}
+        {% include "maps/navigation_bar.html" %}
+    {% endblock %}
+    
+    <div class="title-container">
+        <h1 class="header-font">Edit: {{ map.title }}</h1>
+    </div>
+
+    <div class="inverted-border-radius-down-right-map"></div>
+
+    <div class="map-container">
+        <div id="js-map" data-map-id="{{ map.pk }}" data-map-start1="{{ map.starting_location_1 }}" data-map-start2="{{ map.starting_location_2 }}" class="map"></div>
+    </div>
+    
+    <div class="inverted-border-radius-up"></div>
+    
+    <div class="container">
+        <div class="wrapping">
+            <h1 class="header-font">Edit the details here!</h1>
+            <form action="{% url 'save' map.pk %}" id="map-form" method="post" class="design-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="title" class="form-title">Title:</label>
+                {{ form.title }}
+                <br>
+                <label for="description" class="form-title">Description:</label>
+                {{ form.description }}
+                <br>
+                <label for="location" class="form-title">Where is it?:</label>
+                <label for="starting_location" class="form-title-small">Starting Address:</label>
+                {{ form.starting_location }}
+                <br>
+                <label for="duration" class="form-title">How longs does it take?:</label>
+                <div class="two-columns">
+                    <label for="duration_hours" class="form-title-small">Hours:</label>
+                    <label for="duration_minutes" class="form-title-small">Minutes:</label>
+                    {{ form.duration_hours }}
+                    {{ form.duration_minutes }}
+                </div>
+                <br>
+                <label for="category" class="form-title">Category:</label>
+                {{ form.category }}
+                <br>
+                <input type="submit" value="save" class="form-button-secondary" id="input-button">
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer-radius">
+        <div class="inverted-border-radius-down"></div>
+        <div class="inverted-border-radius-down-right"></div>
+    </div>
+    <div class="footer"></div>
+
+</body>
+</html>

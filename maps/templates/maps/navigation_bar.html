@@ -1,0 +1,28 @@
+{% load socialaccount %}
+<nav class="navbar">
+    <ul>
+            <button class="navbar-close"> ☰ </button>
+        <li class="navbar-list-items">
+            <a class="nav-logo" href="{% url 'search' %}" b><span class="logo-text-lighter">I Went Here</span></b></a>
+        </li>
+        <li class="navbar-list-items">
+            <a class="nav-link" href="{% url 'search' %}">Search</a>
+        </li>
+        <li class="navbar-list-items">
+            <a class="nav-link" href="{% url 'index' %}">All</a>
+        </li>
+        <li class="navbar-list-items">
+            <a class="nav-link" href="{% url 'test' %}">Create</a>
+        </li>
+        <li class="navbar-list-items">
+            {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'profile' user.username %}">{{ user.username }}</a>
+            {% else %}
+                <a href="{% provider_login_url 'google' %}">Login</a>
+            {% endif %}
+        </li>
+    </ul>
+    <div class="inverted-border-radius-up-navbar"></div>
+</nav>
+
+<div class="navbar-separator"></div>

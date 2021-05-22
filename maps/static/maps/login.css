@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap");
+:root {
+  --primary-colour: #c3dd6f;
+  --primary-colour-light: #e8f5bd9f;
+  --secondary-colour:  #B65F36;
+  --secondary-colour-light: #ffd07e;
+  --secondary-colour-lightest: hsl(28, 76%, 84%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito';
+  background: #c3dd6f;
+  background: -webkit-gradient(linear, left bottom, left top, from(#c3dd6f), color-stop(12%, #c3dd6f), color-stop(37%, #e9d579), to(#ffd07e));
+  background: linear-gradient(0deg, #c3dd6f 0%, #c3dd6f 12%, #e9d579 37%, #ffd07e 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.login-container {
+  margin: 10em 20em 5em 20em;
+  height: 400px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: clamp(200px, 80%, 800px);
+      grid-template-columns: clamp(200px, 80%, 800px);
+  background-color: rgba(231, 182, 47, 0.212);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.login-container .hero-text {
+  margin: 0;
+  padding: 1em 0;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-weight: 800;
+  font-size: 4em;
+  color: var(--secondary-colour);
+}
+
+.login-container .login-text {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  color: var(--secondary-colour);
+}
+
+.login-container a {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.login-container a .login-image {
+  margin: 0;
+  padding: auto;
+  width: 200px;
+  height: 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .login-container {
+    -ms-grid-columns: clamp(200px, 80%, 600px);
+        grid-template-columns: clamp(200px, 80%, 600px);
+    margin: 10em 10em 5em 10em;
+  }
+  .login-container .hero-text {
+    font-size: 3em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    -ms-grid-columns: clamp(200px, 80%, 600px);
+        grid-template-columns: clamp(200px, 80%, 600px);
+    margin: 10em 2em 2em 2em;
+  }
+  .login-container .hero-text {
+    font-size: 2em;
+  }
+}
+/*# sourceMappingURL=login.css.map */

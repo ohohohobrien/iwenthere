@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% block script %}
+    <link rel="stylesheet" href="{% static 'maps/main.css' %}">
+    <link rel="stylesheet" href="{% static 'maps/login.css' %}">
+    <link rel="stylesheet" href="{% static 'maps/create_form.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% load socialaccount %}
+        {% if user.is_authenticated %}
+            You are already logged in!
+        {% else %}
+            <div class="login-container slideIn">
+                <h1 class="hero-text">I Went Here</h1>
+                <span class="login-text">
+                    To create and share a map with your friends, please log in with your Google account.
+                    <br>
+                    <br>
+                    Logging in allows users to follow, share, like and comment throughout the website.
+                    <br>
+                    <br>
+                </p>
+                
+                <a class='login-link' href="{% provider_login_url 'google' %}">
+                    <img class="login-image" src="{% static 'maps/signin_icon.png' %}" alt="Google login icon">
+                </a>
+            </div>
+            <div class="page-button-container">
+                <a href="{% url 'index' %}">
+                    <button class="page-button-secondary">back</button>
+                </a>
+            </div>
+        {% endif %}
+</body>
+</html>
